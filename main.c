@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// Modelo de objeto para cartas
 struct card
 {
     char state;
@@ -11,12 +12,13 @@ struct card
     int tourist_attractions_number;
 };
 
+// Obtem os dados do usuario e cria uma nova carta
 struct card create_card()
 {
     struct card new_card;
     printf("Choose a letter between A and H to represent your state: ");
     scanf(" %c", &new_card.state);
-    printf("Create your card code, for example: %c01 or %c03...: ", new_card.state, new_card.state);
+    printf("Create your card code, for example: %c01, %c02, %c03...: ", new_card.state, new_card.state, new_card.state);
     scanf("%s", new_card.code);
     printf("Now add your city (spaces are not allowed, type '_' between words): ");
     scanf("%s", new_card.city);
@@ -32,6 +34,7 @@ struct card create_card()
     return new_card;
 }
 
+// Exibe na tela todos os dados de uma carta
 void print_card(struct card c, int card_number)
 {
     printf("\n----- CARD %d -----\n", card_number);
@@ -39,12 +42,13 @@ void print_card(struct card c, int card_number)
     printf("Code: %s\n", c.code);
     printf("City: %s\n", c.city);
     printf("Population: %d\n", c.population);
-    printf("Area: %.2f km²\n", c.area);
+    printf("Area: %.2f km^2\n", c.area);
     printf("GDP: %.2f\n", c.gdp);
     printf("Tourist Attractions: %d\n", c.tourist_attractions_number);
     printf("----------------------\n\n");
 }
 
+// Exibe mensagem de boas vindas ao usuario
 void print_initialmsg()
 {
     printf("==============================================\n");
@@ -60,9 +64,12 @@ void print_initialmsg()
 int main()
 {
     print_initialmsg();
+    // define carta nº1
     struct card card1 = create_card();
+    // define carta nº2
     printf("\nAll right, now let's define a second letter:\n\n");
     struct card card2 = create_card();
+    // Exibe as cartas
     printf("\nWell done! Here are the cards you created\n\n");
     print_card(card1, 1);
     print_card(card2, 2);
